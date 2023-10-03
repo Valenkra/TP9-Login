@@ -18,6 +18,38 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Account()
+    {
+        return View();
+    }
+
+    public IActionResult Home()
+    {
+        /*
+        if(Viewbag. user == true){
+            Welcome
+        }else{
+            index;
+        }
+        */
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult ForgotMyPassword()
+    {
+        return View();
+    }
+
+    public IActionResult SignUp()
+    {
+        return View();
+    }
+
+    public IActionResult Welcome()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 50rem;
 }
 
 input{
@@ -39,4 +40,15 @@ input{
 .row-display a {
   padding: 0 5px;
   margin: 5px 0;
+}
+
+.main-login-container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome img {
+  width: 14rem;
+  height: auto;
 }

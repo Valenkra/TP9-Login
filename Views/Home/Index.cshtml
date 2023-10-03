@@ -2,19 +2,18 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="text-center" style="display:flex;flex-direction: column;
-    align-items: center;">
+<div class="text-center main-login-container">
     <h2 class="display-4">Bienvenido</h2>
-    <div class="column-display">
+    <form class="column-display" asp-area="" asp-controller="Home" asp-action="Account" method="POST">
         <h1>Inicia Sesion</h1>
         <label>Ingresa tu usuario</label>
         <input type="text" id="username" placeholder="JohnDoe333">
         <label>Ingresa tu contraseña</label>
         <input type="text" id="password" placeholder="*******">
         <input type="submit" value="Iniciar Sesion">
-    </div>
+    </form>
     <div class="row-display">    
-        <a href="SignUp.cshtml">No tengo cuenta</a>
+        <a href='@Url.Action("SignUp")'> No tengo cuenta</a>
         <a href="http://">Olvidé mi contraseña</a>
     </div>
 
