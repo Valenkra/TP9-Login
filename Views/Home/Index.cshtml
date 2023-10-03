@@ -1,8 +1,21 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Login";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center" style="display:flex;flex-direction: column;
+    align-items: center;">
+    <h2 class="display-4">Bienvenido</h2>
+    <div class="column-display">
+        <h1>Inicia Sesion</h1>
+        <label>Ingresa tu usuario</label>
+        <input type="text" id="username" placeholder="JohnDoe333">
+        <label>Ingresa tu contraseña</label>
+        <input type="text" id="password" placeholder="*******">
+        <input type="submit" value="Iniciar Sesion">
+    </div>
+    <div class="row-display">    
+        <a href="SignUp.cshtml">No tengo cuenta</a>
+        <a href="http://">Olvidé mi contraseña</a>
+    </div>
+
 </div>
