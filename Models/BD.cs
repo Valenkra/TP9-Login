@@ -19,7 +19,7 @@ public static class BD {
     public static void SignUp(string user, string password){
         using(SqlConnection db = new SqlConnection(_connectionString) ){
             string SQL = @"USE [UserInfo]
-                INSERT INTO [dbo].[User]
+                INSERT INTO [dbo].[UserInformation]
                         ([Username]
                         ,[Contraseña]
                         ,[Email]

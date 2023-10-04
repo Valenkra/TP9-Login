@@ -2,9 +2,9 @@ namespace Login.Models;
 
 public class User
 {
-    string Username {get; set;}
-    string Contraseña {get; set;}
-    string Email {get; set;}
-    int Edad {get; set;}
-    string Nombre {get; set;}
+    public string Username {get; set;}
+    public string Contraseña {get; set;}
+    public string Email {get; set;}
+    public int Edad {get; set;}
+    public string Nombre {get; set;}
 }

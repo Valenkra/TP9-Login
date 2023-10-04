@@ -1,3 +1,7 @@
 ﻿@{
-    Layout = "_Layout";
+    if (ViewContext.ViewBag.Conectado == true) {
+        Layout = "_LayoutLogged";
+    }else {
+        Layout = "_Layout";
+    }
 }
