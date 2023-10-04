@@ -18,9 +18,21 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Account()
+    [HttpPost]
+    public IActionResult Account(string user, string passw, string requestedType)
     {
-        return View();
+        if(requestedType == "login"){
+            User usuario = BD.LogIn(user, passw);
+            if(usuario != null){
+                Persona.Username = usuario.Username; 
+                return RedirectToAction("Welcome");
+            }else{
+                return RedirectToAction("Index");
+            }
+        }else{
+            BD.SignUp(user, passw);
+            return RedirectToAction("Index");
+        }
     }
 
     public IActionResult Home()
