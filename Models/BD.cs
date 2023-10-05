@@ -35,4 +35,27 @@ public static class BD {
             db.Execute(SQL, new {username = user, contra = password});
         }
     }
+
+    public static void UpdateInfo(string username, string nombre, string age, string mail){
+        using(SqlConnection db = new SqlConnection(_connectionString) ){
+            string SQL = @"USE [UserInfo]
+                        GO
+                        UPDATE [dbo].[UserInformation]
+                        SET [Email] = @email
+                            ,[Edad] = @edad
+                            ,[Nombre] = @name
+                        WHERE Username = @user
+                        GO";
+            db.Execute(SQL, new {email = mail, edad = age, name = nombre, user = username});
+        }
+    }
+
+    public static User GetInfo(string username){
+        User MiUsuario = null;
+        using(SqlConnection db = new SqlConnection(_connectionString) ){
+            string SQL = "SELECT * FROM UserInformation WHERE Username = @miUsuario";
+            MiUsuario = db.QueryFirstOrDefault(SQL, new {miUsuario = username});
+        }
+        return MiUsuario;
+    }
 }

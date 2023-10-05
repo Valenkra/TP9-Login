@@ -23,26 +23,8 @@ public class HomeController : Controller
         }
     }
 
-    [HttpPost]
-    public IActionResult Account(string user, string passw, string requestedType)
-    {
-        if(requestedType == "login"){
-            User usuario = BD.LogIn(user, passw);
-            if(usuario != null){
-                Persona.Username = usuario.Username;
-                Persona.Contraseña = usuario.Contraseña;
-                Persona.Edad = usuario.Edad;
-                Persona.Email = usuario.Email;
-                Persona.Nombre = usuario.Nombre;
-                return RedirectToAction("Welcome");
-            }else{
-                return RedirectToAction("Index");
-            }
-        }else{
-            BD.SignUp(user, passw);
-            return RedirectToAction("Index");
-        }
-    }
+
+
     public IActionResult ForgotMyPassword()
     {
         ViewBag.Conectado = false;
@@ -58,7 +40,6 @@ public class HomeController : Controller
     public IActionResult Welcome()
     {   
         ViewBag.Conectado = true;
-        ViewBag.Name = Persona.Nombre;
         return View();
     }
 

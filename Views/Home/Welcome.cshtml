@@ -4,5 +4,29 @@
 
 <div class="text-center main-login-container welcome">
     <img src="/img/user.jfif" style="border-radius: 50%;">
-    <span>Hola, @ViewBag.Name!</span>
+    
+
+    @if(ViewBag.Name == ""){
+        <span>Hola! Todavía no sabemos tu nombre, podes cambiarlo desde el menu de abajo.</span>
+    }else{
+        <span>Hola, @ViewBag.Name!</span>
+    }
+
+
+    <form class="column-display personal-form-width"action='@Url.Action("Account")' method="POST"  autocomplete="off" >
+        <h1>Mi informacion</h1>
+        <label>Usuario</label>
+        <input type="text" id="username" name="user" value="@ViewBag.User" readonly>
+        <label>Nombre</label>
+        <input type="text " id="password" name="name" value="@ViewBag.Name" placeholder="¿Cuál es tu nombre?">
+        <label>Email de recuperacion </label>
+        <input type="text " id="password" name="email" value="@ViewBag.Email" placeholder="Este email servirá para volver a tener posesion de la cuenta si se bloquea">
+        <label>Edad</label>
+        @if(ViewBag.Edad > 0){
+            <input type="text" id="int" name="edad" value="@ViewBag.Edad" placeholder="¿Cuántos años tenes?">
+        }else{
+            <input type="text" id="int" name="edad" placeholder="¿Cuántos años tenes?">
+        }
+        <input type="submit" value="Guardar informacion">
+    </form>
 </div>

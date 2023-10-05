@@ -25,7 +25,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.form-width {
   width: 30rem;
+}
+
+.personal-form-width {
+  
+  width: 50rem;
 }
 
 input{

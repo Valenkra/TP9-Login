@@ -1,5 +1,5 @@
-
 namespace Login.Controllers;
+
 public static class Persona {
     public static string Username {get; set;}
     public static string Contraseña {get; set;}
