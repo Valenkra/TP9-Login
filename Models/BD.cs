@@ -16,7 +16,7 @@ public static class BD {
         return elUser;
     }
 
-    public static void SignUp(string user, string password){
+    public static void SignUp(string user, string email, string password){
         using(SqlConnection db = new SqlConnection(_connectionString) ){
             string SQL = @"USE [UserInfo]
                 INSERT INTO [dbo].[UserInformation]
@@ -28,33 +28,31 @@ public static class BD {
                     VALUES
                         (@username
                         ,@contra
-                        ,''
+                        ,@mail
                         ,''
                         ,'')
                     ";
-            db.Execute(SQL, new {username = user, contra = password});
+            db.Execute(SQL, new {username = user, mail = email, contra = password});
         }
     }
 
     public static void UpdateInfo(string username, string nombre, string age, string mail){
         using(SqlConnection db = new SqlConnection(_connectionString) ){
             string SQL = @"USE [UserInfo]
-                        GO
                         UPDATE [dbo].[UserInformation]
                         SET [Email] = @email
                             ,[Edad] = @edad
                             ,[Nombre] = @name
-                        WHERE Username = @user
-                        GO";
+                        WHERE Username = @user";
             db.Execute(SQL, new {email = mail, edad = age, name = nombre, user = username});
         }
     }
 
-    public static User GetInfo(string username){
+    public static User GetInfo(string myUser){
         User MiUsuario = null;
         using(SqlConnection db = new SqlConnection(_connectionString) ){
             string SQL = "SELECT * FROM UserInformation WHERE Username = @miUsuario";
-            MiUsuario = db.QueryFirstOrDefault(SQL, new {miUsuario = username});
+            MiUsuario = db.QueryFirstOrDefault<User>(SQL, new {miUsuario = myUser});
         }
         return MiUsuario;
     }

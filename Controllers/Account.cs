@@ -13,16 +13,25 @@ public class Account : Controller
     {
         User usuario = BD.LogIn(user, passw);
         if(usuario != null){
+            IgualarPersona(usuario);
             return RedirectToAction("Welcome", "Home");
         }else{
             return RedirectToAction("Index", "Home");
         }
     }
 
+    private void IgualarPersona(User usuario){
+        Persona.Username = usuario.Username;
+        Persona.Nombre = usuario.Nombre;
+        Persona.Email = usuario.Email;
+        Persona.Edad = usuario.Edad;
+        Persona.Contrasenia = usuario.Contraseña;
+    }
+
     [HttpPost]
-    public IActionResult SignUp(string user, string passw)
+    public IActionResult SignUp(string user, string mail, string passw)
     {
-        BD.SignUp(user, passw);
+        BD.SignUp(user, mail, passw);
         return RedirectToAction("Index", "Home");
     }
     
@@ -36,6 +45,7 @@ public class Account : Controller
     public IActionResult UpdateMyInfo(string user, string name, string email, string edad){
         BD.UpdateInfo(user, name, edad, email);
         User Personal = BD.GetInfo(user);
+        IgualarPersona(Personal); 
         return RedirectToAction("Welcome", "Home");
     }
 }

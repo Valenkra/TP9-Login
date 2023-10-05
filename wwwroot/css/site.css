@@ -33,7 +33,7 @@ body {
 
 .personal-form-width {
   
-  width: 50rem;
+  width: 60rem;
 }
 
 input{
@@ -59,4 +59,12 @@ input{
 .welcome img {
   width: 14rem;
   height: auto;
+}
+
+form {
+  margin-top: 6rem;
+}
+
+.text-center {
+  margin-top: 3rem;
 }

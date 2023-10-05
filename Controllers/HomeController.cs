@@ -23,8 +23,6 @@ public class HomeController : Controller
         }
     }
 
-
-
     public IActionResult ForgotMyPassword()
     {
         ViewBag.Conectado = false;
@@ -39,6 +37,10 @@ public class HomeController : Controller
 
     public IActionResult Welcome()
     {   
+        ViewBag.Name = Persona.Nombre;
+        ViewBag.User = Persona.Username;
+        ViewBag.Email = Persona.Email;
+        ViewBag.Edad = Persona.Edad;
         ViewBag.Conectado = true;
         return View();
     }

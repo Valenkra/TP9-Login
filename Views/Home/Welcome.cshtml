@@ -13,7 +13,7 @@
     }
 
 
-    <form class="column-display personal-form-width"action='@Url.Action("Account")' method="POST"  autocomplete="off" >
+    <form class="column-display personal-form-width"action='@Url.Action("UpdateMyInfo", "Account")' method="POST"  autocomplete="off" >
         <h1>Mi informacion</h1>
         <label>Usuario</label>
         <input type="text" id="username" name="user" value="@ViewBag.User" readonly>
