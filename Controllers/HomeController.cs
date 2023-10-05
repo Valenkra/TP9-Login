@@ -29,10 +29,11 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult SignUp()
+    public IActionResult Registro()
     {
+        ViewBag.Mistake = Errror.Mistake;
         ViewBag.Conectado = false;
-        return View();
+        return View("SignUp");
     }
 
     public IActionResult Welcome()

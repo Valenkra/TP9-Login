@@ -48,11 +48,20 @@ public static class BD {
         }
     }
 
-    public static User GetInfo(string myUser){
+    public static User GetInfoFromUser(string myUser){
         User MiUsuario = null;
         using(SqlConnection db = new SqlConnection(_connectionString) ){
             string SQL = "SELECT * FROM UserInformation WHERE Username = @miUsuario";
             MiUsuario = db.QueryFirstOrDefault<User>(SQL, new {miUsuario = myUser});
+        }
+        return MiUsuario;
+    }
+
+    public static User GetInfoFromEmail(string myEmail){
+        User MiUsuario = null;
+        using(SqlConnection db = new SqlConnection(_connectionString) ){
+            string SQL = "SELECT * FROM UserInformation WHERE Email = @miMail";
+            MiUsuario = db.QueryFirstOrDefault<User>(SQL, new {miMail = myEmail});
         }
         return MiUsuario;
     }

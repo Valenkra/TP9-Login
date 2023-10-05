@@ -2,16 +2,16 @@
     ViewData["Title"] = "Sign Up";
 }
 
-<div class="text-center main-login-container">
-    <form class="column-display form-width"action='@Url.Action("SignUp", "Account")' method="POST"  autocomplete="off">
+<div class="text-center main-login-container"> <!-- action='@Url.Action("SignUp", "Account")' -->
+    <form class="column-display form-width"  action='@Url.Action("SignUp", "Account")' method="POST"  autocomplete="off">
         <h1>Registrate</h1>
         <label>Elegí un usuario</label>
-        <input type="text" id="user" name="user" placeholder="StartDust_03">
+        <input type="text" id="user" name="user" placeholder="StartDust_03" required>
         <label>Ingresa tu email</label>
-        <input type="email" id="mail" name="mail" placeholder="start@mail.com">
+        <input type="email" id="mail" name="mail" placeholder="start@mail.com" required>
         <label>Creá tu contraseña</label>
-        <input type="text" id="passw" name="passw" placeholder="*******">
-        <input type="submit" value="Registrarme">
+        <input type="password" id="passw" name="passw" placeholder="*******" required>
+        <input type="submit" value="Registrarme"  onclick="checkStringInput('user', 'mail', 'passw')">
     </form>
     <div class="row-display">    
         <a href='@Url.Action("Index")'>Ya tengo cuenta</a>

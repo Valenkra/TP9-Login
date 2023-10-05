@@ -3,17 +3,17 @@
 }
 
 <div class="text-center main-login-container">
-    <form class="column-display form-width"action='@Url.Action("LogIn", "Account")' method="POST"  autocomplete="off" >
+    <form class="column-display form-width" action='@Url.Action("LogIn", "Account")' method="POST"  autocomplete="off" >
         <h1>Inicia Sesion</h1>
         <label>Ingresa tu usuario</label>
-        <input type="text" id="username" name="user" placeholder="JohnDoe333">
+        <input type="text" id="username" name="user" placeholder="JohnDoe333" required>
         <label>Ingresa tu contraseña</label>
-        <input type="password " id="password" name="passw" placeholder="*******">
+        <input type="password" id="password" name="passw" placeholder="*******" required>
         <input type="hidden" name="requestedType" value="login">
-        <input type="submit" value="Iniciar Sesion">
+        <input type="submit" value="Iniciar Sesion" onclick="checkStringInput('username', 'password')">
     </form>
     <div class="row-display">    
-        <a href='@Url.Action("SignUp")'> No tengo cuenta</a>
+        <a href='@Url.Action("Registro")'> No tengo cuenta</a>
         <a href="http://">Olvidé mi contraseña</a>
     </div>
 

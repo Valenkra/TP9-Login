@@ -31,8 +31,18 @@ public class Account : Controller
     [HttpPost]
     public IActionResult SignUp(string user, string mail, string passw)
     {
-        BD.SignUp(user, mail, passw);
-        return RedirectToAction("Index", "Home");
+        if(BD.GetInfoFromUser(user) == null && BD.GetInfoFromUser(mail) == null){
+            BD.SignUp(user, mail, passw);
+            Errror.Mistake = "";
+            return RedirectToAction("Welcome", "Home");
+        }else{
+            if(BD.GetInfoFromUser(user) != null){
+                Errror.Mistake = "Ese usuario ya esta en uso, pruebe agregando letras o numeros";
+            }else if(BD.GetInfoFromUser(mail) != null){
+                Errror.Mistake = "Ese mail ya esta en uso, pruebe iniciando sesion";
+            }
+            return RedirectToAction("Registro", "Home");
+        }
     }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -44,7 +54,7 @@ public class Account : Controller
     [HttpPost]
     public IActionResult UpdateMyInfo(string user, string name, string email, string edad){
         BD.UpdateInfo(user, name, edad, email);
-        User Personal = BD.GetInfo(user);
+        User Personal = BD.GetInfoFromUser(user);
         IgualarPersona(Personal); 
         return RedirectToAction("Welcome", "Home");
     }
