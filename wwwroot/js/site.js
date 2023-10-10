@@ -1,6 +1,4 @@
-﻿// Write your JavaScript code.
-
-function checkStringInput(){
+﻿function checkStringInput(){
     let inputs = []
     let temp = 0;
 
@@ -16,13 +14,32 @@ function checkStringInput(){
         }
     }
 
-    console.log(arguments);
-    console.log(arguments.length);
-    console.log(temp);
     if(temp != arguments.length){
         alert(`Falta información, por favor rellená todos los inputs necesarios.`);
         return false;
     }else{
         return true;
     }
+}
+
+
+
+
+function showSignMessage(sms){
+    let sayings = ["Se ha creado tu cuenta satisfactoriamente", "El nombre de usuario no es válido", 
+    "Ya hay una cuenta con ese email", "Los datos son incorrectos o ya fueron utilizados en otra cuenta"];
+    const resultado = document.getElementById("resultado");
+    var index = document.getElementById("ViewBag.showSMS").value;
+    let msg = '@TempData["show"]';
+    resultado.innerHTML = sms;
+    sms = sayings[index];
+    alert(msg);
+    alert(index);
+}
+
+let sms = "-";
+
+if(document.body.contains(document.getElementById("sign-up-h1"))){
+    showSignMessage(sms);
+    alert("fuck");
 }

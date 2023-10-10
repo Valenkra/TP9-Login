@@ -29,8 +29,10 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Registro()
+    public IActionResult Registro(int sms)
     {
+        TempData["show"] = sms;
+        ViewBag.showSMS = sms;
         ViewBag.Mistake = Errror.Mistake;
         ViewBag.Conectado = false;
         return View("SignUp");

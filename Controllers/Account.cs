@@ -31,18 +31,10 @@ public class Account : Controller
     [HttpPost]
     public IActionResult SignUp(string user, string mail, string passw)
     {
-        if(BD.GetInfoFromUser(user) == null && BD.GetInfoFromUser(mail) == null){
-            BD.SignUp(user, mail, passw);
-            Errror.Mistake = "";
-            return RedirectToAction("Welcome", "Home");
-        }else{
-            if(BD.GetInfoFromUser(user) != null){
-                Errror.Mistake = "Ese usuario ya esta en uso, pruebe agregando letras o numeros";
-            }else if(BD.GetInfoFromUser(mail) != null){
-                Errror.Mistake = "Ese mail ya esta en uso, pruebe iniciando sesion";
-            }
-            return RedirectToAction("Registro", "Home");
-        }
+        ViewBag.SMS = BD.SignUp(user, mail, passw);
+        Errror.Mistake = "";
+        return RedirectToAction("Registro", "Home", new {sms = @ViewBag.SMS});
+    
     }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
